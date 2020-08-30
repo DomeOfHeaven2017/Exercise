@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion AndroidConfig.compileSdkVersion
@@ -16,23 +17,61 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = "1.8"
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    // Basic
     implementation AndroidDeps.kt_stdlib
     implementation AndroidDeps.ktx_core
     implementation AndroidDeps.appcompat
     implementation AndroidDeps.constrantLayout
-
+    implementation AndroidDeps.material
+    implementation AndroidDeps.recyclerView
+    //Test
     testImplementation AndroidDeps.junit
     androidTestImplementation AndroidDeps.junit_ext
     androidTestImplementation AndroidDeps.espresso
-
+    //Room
+    implementation ThirdDeps.room_ktx
+    kapt ThirdDeps.room_compiler
+    //Lifecycle
+    implementation ThirdDeps.viewmodel_ktx
+    implementation ThirdDeps.livedata_ktx
+    //Paging
+    implementation ThirdDeps.paging
+    //Navigation
+    implementation ThirdDeps.nav_fragment
+    implementation ThirdDeps.nav_ui
+    //WorkManager
+    implementation ThirdDeps.work
+    //Gson
+    implementation ThirdDeps.gson
+    //Coil
+    implementation ThirdDeps.coil
+    //retrofit
+    implementation ThirdDeps.retrofit
 }
