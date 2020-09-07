@@ -1,5 +1,6 @@
 package com.wx.exercise.ui.adapter
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
@@ -39,11 +40,14 @@ class PersonPageHolder (parent: ViewGroup): RecyclerView.ViewHolder(
     private val coverImg: AppCompatImageView = itemView.findViewById(R.id.img_cover_person_list_item)
 
     fun bindTo(person: Person) {
+        itemView.tag = person.id
         infoText.text = person.name
         with(person.cover) {
-            if (isNotEmpty()) {
+            if (TextUtils.isEmpty(this)) {
+                coverImg.setBackgroundResource(R.drawable.default_image)
+            } else {
                 coverImg.load(this) {
-
+                    placeholder(R.drawable.default_image)
                 }
             }
         }
