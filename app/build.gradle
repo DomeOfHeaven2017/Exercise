@@ -35,4 +35,7 @@ dependencies {
     androidTestImplementation AndroidDeps.junit_ext
     androidTestImplementation AndroidDeps.espresso
 
+    implementation ThirdDeps.exo_player
+    implementation ThirdDeps.ijk_player_java
+    implementation ThirdDeps.ijk_player_arm
 }
