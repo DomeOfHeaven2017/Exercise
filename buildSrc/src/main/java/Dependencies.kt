@@ -11,7 +11,7 @@ object Version {
     const val espresso = "3.2.0"
 
     const val constrantLayout = "1.1.3"
-
+    const val fragment = "1.3.0-rc01"
 
 }
 
@@ -24,6 +24,7 @@ object AndroidDeps {
 
     const val appcompat = "androidx.appcompat:appcompat:${Version.appcompat}"
     const val constrantLayout = "androidx.constraintlayout:constraintlayout:${Version.constrantLayout}"
+    const val fragment = "androidx.fragment:fragment:${Version.fragment}"
 }
 
 object ThirdDeps {

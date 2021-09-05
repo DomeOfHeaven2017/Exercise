@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion AndroidConfig.compileSdkVersion
@@ -30,9 +29,9 @@ dependencies {
     implementation AndroidDeps.ktx_core
     implementation AndroidDeps.appcompat
     implementation AndroidDeps.constrantLayout
+    implementation AndroidDeps.fragment
 
     testImplementation AndroidDeps.junit
     androidTestImplementation AndroidDeps.junit_ext
     androidTestImplementation AndroidDeps.espresso
-
 }
