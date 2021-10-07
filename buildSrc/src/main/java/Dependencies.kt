@@ -25,6 +25,7 @@ object AndroidDeps {
     const val appcompat = "androidx.appcompat:appcompat:${Version.appcompat}"
     const val constrantLayout = "androidx.constraintlayout:constraintlayout:${Version.constrantLayout}"
     const val fragment = "androidx.fragment:fragment:${Version.fragment}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:1.2.1"
 }
 
 object ThirdDeps {
